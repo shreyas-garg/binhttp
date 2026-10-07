@@ -1,0 +1,41 @@
+* connected to localhost:9000 (one connection for all requests)
+>> PREFACE  magic="BH" version=1.0
+   preface  42 48 01 00
+>> HEADERS  len=55 flags=0x01 [END_STREAM] req=1
+   header   00 00 00 37 | 01 01 | 00 01   (length | type flags | req_id)
+   000000   01 00 03 47 45 54 02 00  0b 2f 69 6e 64 65 78 2e  |...GET.../index.|
+   000010   68 74 6d 6c 03 00 0e 6c  6f 63 61 6c 68 6f 73 74  |html...localhost|
+   000020   3a 39 30 30 30 04 00 09  62 63 75 72 6c 2f 31 2e  |:9000...bcurl/1.|
+   000030   30 05 00 03 2a 2f 2a                              |0...*/*|
+     [ 1] :method: GET
+     [ 2] :path: /index.html
+     [ 3] host: localhost:9000
+     [ 4] user-agent: bcurl/1.0
+     [ 5] accept: */*
+<< PREFACE  magic="BH" version=1.0
+   preface  42 48 01 00
+<< HEADERS  len=84 flags=0x00 req=1
+   header   00 00 00 54 | 01 00 | 00 01   (length | type flags | req_id)
+   000000   06 00 03 32 30 30 07 00  18 74 65 78 74 2f 68 74  |...200...text/ht|
+   000010   6d 6c 3b 20 63 68 61 72  73 65 74 3d 75 74 66 2d  |ml; charset=utf-|
+   000020   38 08 00 03 31 33 33 09  00 0a 62 73 65 72 76 65  |8...133...bserve|
+   000030   2f 31 2e 30 0a 00 1d 54  75 65 2c 20 30 36 20 4f  |/1.0...Tue, 06 O|
+   000040   63 74 20 32 30 32 36 20  31 33 3a 30 37 3a 34 39  |ct 2026 13:07:49|
+   000050   20 47 4d 54                                       | GMT|
+     [ 6] :status: 200
+     [ 7] content-type: text/html; charset=utf-8
+     [ 8] content-length: 133
+     [ 9] server: bserve/1.0
+     [10] date: Tue, 06 Oct 2026 13:07:49 GMT
+<< DATA     len=133 flags=0x01 [END_STREAM] req=1
+   header   00 00 00 85 | 00 01 | 00 01   (length | type flags | req_id)
+   000000   3c 21 64 6f 63 74 79 70  65 20 68 74 6d 6c 3e 0a  |<!doctype html>.|
+   000010   3c 68 74 6d 6c 3e 0a 3c  68 65 61 64 3e 3c 74 69  |<html>.<head><ti|
+   000020   74 6c 65 3e 42 48 54 54  50 3c 2f 74 69 74 6c 65  |tle>BHTTP</title|
+   000030   3e 3c 2f 68 65 61 64 3e  0a 3c 62 6f 64 79 3e 0a  |></head>.<body>.|
+   000040   3c 68 31 3e 48 65 6c 6c  6f 20 6f 76 65 72 20 42  |<h1>Hello over B|
+   000050   48 54 54 50 2f 31 3c 2f  68 31 3e 0a 3c 70 3e 53  |HTTP/1</h1>.<p>S|
+   000060   65 72 76 65 64 20 62 79  20 62 73 65 72 76 65 2e  |erved by bserve.|
+   000070   3c 2f 70 3e 0a 3c 2f 62  6f 64 79 3e 0a 3c 2f 68  |</p>.</body>.</h|
+   000080   74 6d 6c 3e 0a                                    |tml>.|
+* GET /index.html -> 200 OK

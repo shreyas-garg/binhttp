@@ -1,0 +1,41 @@
+* connected to localhost:9000 (one connection for all requests)
+>> PREFACE  magic="BH" version=1.0
+   preface  42 48 01 00
+>> HEADERS  len=74 flags=0x01 [END_STREAM] req=1
+   header   00 00 00 4a | 01 01 | 00 01   (length | type flags | req_id)
+   000000   01 00 03 47 45 54 02 00  0a 2f 68 65 6c 6c 6f 2e  |...GET.../hello.|
+   000010   74 78 74 03 00 0e 6c 6f  63 61 6c 68 6f 73 74 3a  |txt...localhost:|
+   000020   39 30 30 30 04 00 09 62  63 75 72 6c 2f 31 2e 30  |9000...bcurl/1.0|
+   000030   05 00 03 2a 2f 2a 00 08  78 2d 63 6f 75 72 73 65  |...*/*..x-course|
+   000040   00 08 6e 65 74 77 6f 72  6b 73                    |..networks|
+     [ 1] :method: GET
+     [ 2] :path: /hello.txt
+     [ 3] host: localhost:9000
+     [ 4] user-agent: bcurl/1.0
+     [ 5] accept: */*
+     [lit] x-course: networks
+<< PREFACE  magic="BH" version=1.0
+   preface  42 48 01 00
+<< UNKNOWN  len=44 flags=0xff [END_STREAM] req=1 (type 0xbb)
+   header   00 00 00 2c | bb ff | 00 01   (length | type flags | req_id)
+   (unknown type 0xbb: skipping 44 bytes)
+   000000   75 6e 6b 6e 6f 77 6e 20  66 72 61 6d 65 20 74 79  |unknown frame ty|
+   000010   70 65 3a 20 61 20 76 31  20 70 65 65 72 20 4d 55  |pe: a v1 peer MU|
+   000020   53 54 20 73 6b 69 70 20  74 68 69 73              |ST skip this|
+<< HEADERS  len=84 flags=0x00 req=1
+   header   00 00 00 54 | 01 00 | 00 01   (length | type flags | req_id)
+   000000   06 00 03 32 30 30 07 00  19 74 65 78 74 2f 70 6c  |...200...text/pl|
+   000010   61 69 6e 3b 20 63 68 61  72 73 65 74 3d 75 74 66  |ain; charset=utf|
+   000020   2d 38 08 00 02 31 36 09  00 0a 62 73 65 72 76 65  |-8...16...bserve|
+   000030   2f 31 2e 30 0a 00 1d 54  75 65 2c 20 30 36 20 4f  |/1.0...Tue, 06 O|
+   000040   63 74 20 32 30 32 36 20  31 33 3a 30 39 3a 30 39  |ct 2026 13:09:09|
+   000050   20 47 4d 54                                       | GMT|
+     [ 6] :status: 200
+     [ 7] content-type: text/plain; charset=utf-8
+     [ 8] content-length: 16
+     [ 9] server: bserve/1.0
+     [10] date: Tue, 06 Oct 2026 13:09:09 GMT
+<< DATA     len=16 flags=0x01 [END_STREAM] req=1
+   header   00 00 00 10 | 00 01 | 00 01   (length | type flags | req_id)
+   000000   70 6c 61 69 6e 20 74 65  78 74 20 66 69 6c 65 0a  |plain text file.|
+* GET /hello.txt -> 200 OK
